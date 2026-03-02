@@ -377,7 +377,7 @@ const Form = () => {
       const formDataUpload = new FormData();
       formDataUpload.append('resume', file);
 
-      const response = await fetch('http://localhost:5000/api/resume/parse', {
+      const response = await fetch('https://datahire.onrender.com/api/resume/parse', {
         method: 'POST',
         body: formDataUpload
       });
@@ -504,7 +504,7 @@ const Form = () => {
         wasAutofilled: autofilledFields.length > 0
       };
 
-      const response = await fetch('http://localhost:5000/api/applications', {
+      const response = await fetch('https://datahire.onrender.com/api/applications', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submitData)
