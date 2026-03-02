@@ -1,0 +1,1265 @@
+/* ==================== RECRUITER LOGIN CONTAINER ==================== */
+.recruiter-login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ==================== THEME: DARK (DEFAULT) ==================== */
+.recruiter-login-container.theme-dark {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* ==================== THEME: LIGHT ==================== */
+.recruiter-login-container.theme-light {
+  background: linear-gradient(135deg, #e8eaf6 0%, #f5f5f5 100%);
+}
+
+/* ==================== THEME: HIGH CONTRAST ==================== */
+.recruiter-login-container.theme-high-contrast {
+  background: #000000;
+}
+
+/* ==================== FLOATING TOOLBAR ==================== */
+.floating-toolbar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(14px);
+  white-space: nowrap;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.toolbar-btn-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.toolbar-btn-label {
+  font-size: 0.85rem;
+}
+
+/* Toolbar in DARK theme */
+.theme-dark .toolbar-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.theme-dark .toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Toolbar in LIGHT theme */
+.theme-light .toolbar-btn {
+  background: rgba(0, 0, 0, 0.06);
+  color: #1a1a2e;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.theme-light .toolbar-btn:hover {
+  background: rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Toolbar in HIGH CONTRAST theme */
+.theme-high-contrast .toolbar-btn {
+  background: #000000;
+  color: #ffff00;
+  border: 3px solid #ffff00;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.theme-high-contrast .toolbar-btn:hover {
+  background: #ffff00;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.theme-high-contrast .toolbar-btn:focus {
+  outline: 4px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ==================== BACKGROUND SHAPES ==================== */
+.recruiter-login-container .login-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.recruiter-login-container .bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  transition: opacity 0.4s ease;
+}
+
+.recruiter-login-container .bg-shape-1 {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+  top: -300px;
+  right: -200px;
+  opacity: 0.15;
+  animation: float 20s ease-in-out infinite;
+}
+
+.recruiter-login-container .bg-shape-2 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #7209b7 0%, #560bad 100%);
+  bottom: -200px;
+  left: -100px;
+  opacity: 0.15;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+.recruiter-login-container .bg-shape-3 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+  top: 50%;
+  left: 10%;
+  opacity: 0.1;
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Light theme shapes */
+.theme-light .bg-shape-1 {
+  opacity: 0.08;
+}
+.theme-light .bg-shape-2 {
+  opacity: 0.08;
+}
+.theme-light .bg-shape-3 {
+  opacity: 0.06;
+}
+
+/* High contrast: hide shapes */
+.theme-high-contrast .bg-shape {
+  display: none;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(20px, -20px) rotate(5deg);
+  }
+}
+
+/* ==================== BACK BUTTON ==================== */
+.recruiter-login-container .back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+/* Dark back button */
+.theme-dark .back-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.theme-dark .back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+}
+
+/* Light back button */
+.theme-light .back-button {
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #1a1a2e;
+}
+
+.theme-light .back-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateX(-5px);
+}
+
+/* High contrast back button */
+.theme-high-contrast .back-button {
+  background: #000000;
+  border: 3px solid #ffff00;
+  color: #ffff00;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.theme-high-contrast .back-button:hover {
+  background: #ffff00;
+  color: #000000;
+}
+
+.theme-high-contrast .back-button:focus {
+  outline: 4px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.recruiter-login-container .back-arrow {
+  font-size: 1.2rem;
+}
+
+/* ==================== LOGIN CARD ==================== */
+.recruiter-login-container .login-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  animation: slideUp 0.6s ease;
+  transition: all 0.4s ease;
+}
+
+/* Dark card */
+.theme-dark .login-card {
+  background: white;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
+}
+
+/* Light card */
+.theme-light .login-card {
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* High contrast card */
+.theme-high-contrast .login-card {
+  background: #000000;
+  border: 4px solid #ffff00;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== LEFT SIDE - BRANDING ==================== */
+.recruiter-login-container .login-branding.recruiter {
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Dark branding */
+.theme-dark .login-branding.recruiter {
+  background: linear-gradient(135deg, #f72585 0%, #7209b7 50%, #3a0ca3 100%);
+}
+
+/* Light branding */
+.theme-light .login-branding.recruiter {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* High contrast branding */
+.theme-high-contrast .login-branding.recruiter {
+  background: #000000;
+  border-right: 4px solid #ffff00;
+}
+
+.recruiter-login-container .login-branding::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  animation: pulse 15s ease-in-out infinite;
+}
+
+.theme-high-contrast .login-branding::before {
+  display: none;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.3; }
+}
+
+.recruiter-login-container .branding-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  transition: color 0.4s ease;
+}
+
+.theme-high-contrast .branding-content {
+  color: #ffff00;
+}
+
+.recruiter-login-container .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.recruiter-login-container .brand-logo .logo-icon {
+  font-size: 2.5rem;
+}
+
+.recruiter-login-container .brand-logo .logo-text {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.recruiter-login-container .branding-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.recruiter-login-container .branding-content > p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.theme-high-contrast .branding-content > p {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.recruiter-login-container .features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.recruiter-login-container .feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+.theme-high-contrast .feature-item {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.recruiter-login-container .feature-icon {
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.theme-high-contrast .feature-icon {
+  background: #ffff00;
+  color: #000000;
+  font-weight: 900;
+  width: 28px;
+  height: 28px;
+  font-size: 0.9rem;
+}
+
+/* Demo Credentials */
+.recruiter-login-container .demo-credentials {
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+
+.theme-dark .demo-credentials,
+.theme-light .demo-credentials {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-high-contrast .demo-credentials {
+  background: #000000;
+  border: 3px solid #ffff00;
+  border-radius: 4px;
+}
+
+.recruiter-login-container .demo-credentials h4 {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.recruiter-login-container .credential-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.theme-high-contrast .credential-item {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.recruiter-login-container .credential-item:last-child {
+  margin-bottom: 0;
+}
+
+.recruiter-login-container .credential-item code {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.theme-dark .credential-item code,
+.theme-light .credential-item code {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-high-contrast .credential-item code {
+  background: #ffff00;
+  color: #000000;
+  font-weight: 900;
+  font-size: 1.1rem;
+  border-radius: 2px;
+}
+
+/* ==================== RIGHT SIDE - FORM ==================== */
+.recruiter-login-container .login-form-section {
+  padding: 50px 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.4s ease;
+}
+
+.theme-dark .login-form-section {
+  background: white;
+}
+
+.theme-light .login-form-section {
+  background: #ffffff;
+}
+
+.theme-high-contrast .login-form-section {
+  background: #000000;
+}
+
+.recruiter-login-container .form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.recruiter-login-container .recruiter-icon {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+}
+
+.recruiter-login-container .form-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  transition: color 0.4s ease;
+}
+
+.theme-dark .form-header h2 {
+  color: #1a1a2e;
+}
+
+.theme-light .form-header h2 {
+  color: #1a1a2e;
+}
+
+.theme-high-contrast .form-header h2 {
+  color: #ffff00;
+  font-weight: 900;
+}
+
+.recruiter-login-container .form-header p {
+  font-size: 0.95rem;
+  transition: color 0.4s ease;
+}
+
+.theme-dark .form-header p,
+.theme-light .form-header p {
+  color: #666;
+}
+
+.theme-high-contrast .form-header p {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ==================== LOGIN ERROR ==================== */
+.recruiter-login-container .login-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  animation: shake 0.5s ease;
+  transition: all 0.4s ease;
+}
+
+.theme-dark .login-error,
+.theme-light .login-error {
+  background: #fff5f5;
+  border: 1px solid #ffcccc;
+  color: #e63946;
+}
+
+.theme-high-contrast .login-error {
+  background: #000000;
+  border: 3px solid #ff0000;
+  color: #ff0000;
+  font-weight: 900;
+  font-size: 1.1rem;
+  border-radius: 4px;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.recruiter-login-container .error-icon {
+  font-size: 1.2rem;
+}
+
+/* ==================== LOGIN FORM ==================== */
+.recruiter-login-container .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recruiter-login-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recruiter-login-container .form-group label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.4s ease;
+}
+
+.theme-dark .form-group label,
+.theme-light .form-group label {
+  color: #333;
+}
+
+.theme-high-contrast .form-group label {
+  color: #ffff00;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.recruiter-login-container .input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.recruiter-login-container .input-icon {
+  position: absolute;
+  left: 16px;
+  font-size: 1.1rem;
+  z-index: 1;
+}
+
+.recruiter-login-container .input-wrapper input {
+  width: 100%;
+  padding: 16px 50px;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Dark input */
+.theme-dark .input-wrapper input {
+  border: 2px solid #e0e0e0;
+  background: #f8f9fa;
+  color: #333;
+}
+
+.theme-dark .input-wrapper input:focus {
+  outline: none;
+  border-color: #f72585;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(247, 37, 133, 0.1);
+}
+
+.theme-dark .input-wrapper input.error {
+  border-color: #e63946;
+  background: #fff5f5;
+}
+
+/* Light input */
+.theme-light .input-wrapper input {
+  border: 2px solid #d0d0d0;
+  background: #f0f2f5;
+  color: #333;
+}
+
+.theme-light .input-wrapper input:focus {
+  outline: none;
+  border-color: #764ba2;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
+}
+
+.theme-light .input-wrapper input.error {
+  border-color: #e63946;
+  background: #fff5f5;
+}
+
+/* High contrast input */
+.theme-high-contrast .input-wrapper input {
+  border: 3px solid #ffff00;
+  background: #000000;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.theme-high-contrast .input-wrapper input:focus {
+  outline: 4px solid #ffffff;
+  outline-offset: 2px;
+  border-color: #ffff00;
+  background: #1a1a1a;
+  box-shadow: none;
+}
+
+.theme-high-contrast .input-wrapper input.error {
+  border-color: #ff0000;
+  background: #1a0000;
+}
+
+.theme-high-contrast .input-wrapper input::placeholder {
+  color: #999999;
+  font-weight: 600;
+}
+
+.theme-dark .input-wrapper input::placeholder,
+.theme-light .input-wrapper input::placeholder {
+  color: #aaa;
+}
+
+.recruiter-login-container .toggle-password {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.recruiter-login-container .toggle-password:hover {
+  opacity: 1;
+}
+
+.theme-high-contrast .toggle-password {
+  opacity: 1;
+  font-size: 1.5rem;
+}
+
+.recruiter-login-container .error-message {
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.theme-dark .error-message,
+.theme-light .error-message {
+  color: #e63946;
+}
+
+.theme-high-contrast .error-message {
+  color: #ff0000;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+/* ==================== FORM OPTIONS ==================== */
+.recruiter-login-container .form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recruiter-login-container .remember-me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.4s ease;
+}
+
+.theme-dark .remember-me,
+.theme-light .remember-me {
+  color: #666;
+}
+
+.theme-high-contrast .remember-me {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.recruiter-login-container .remember-me input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.theme-dark .remember-me input,
+.theme-light .remember-me input {
+  accent-color: #f72585;
+}
+
+.theme-high-contrast .remember-me input {
+  accent-color: #ffff00;
+  width: 24px;
+  height: 24px;
+}
+
+/* ==================== LOGIN BUTTON ==================== */
+.recruiter-login-container .login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  color: white;
+}
+
+.theme-dark .login-btn {
+  background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+}
+
+.theme-light .login-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.theme-high-contrast .login-btn {
+  background: #ffff00;
+  color: #000000;
+  border: 3px solid #ffff00;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.theme-dark .login-btn:hover:not(:disabled),
+.theme-light .login-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(247, 37, 133, 0.4);
+}
+
+.theme-high-contrast .login-btn:hover:not(:disabled) {
+  background: #000000;
+  color: #ffff00;
+  border-color: #ffff00;
+  transform: scale(1.02);
+}
+
+.theme-high-contrast .login-btn:focus {
+  outline: 4px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.recruiter-login-container .login-btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.recruiter-login-container .login-btn .btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.recruiter-login-container .login-btn:hover:not(:disabled) .btn-arrow {
+  transform: translateX(5px);
+}
+
+.theme-dark .login-btn.loading {
+  background: linear-gradient(135deg, #d63384 0%, #6a1b9a 100%);
+}
+
+.theme-light .login-btn.loading {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46a1 100%);
+}
+
+.theme-high-contrast .login-btn.loading {
+  background: #cccc00;
+  color: #000000;
+}
+
+/* Spinner */
+.recruiter-login-container .spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.theme-high-contrast .spinner {
+  border-color: rgba(0, 0, 0, 0.2);
+  border-top-color: #000000;
+  width: 24px;
+  height: 24px;
+  border-width: 4px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==================== SWITCH USER TYPE ==================== */
+.recruiter-login-container .switch-user-type {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  transition: border-color 0.4s ease;
+}
+
+.theme-dark .switch-user-type,
+.theme-light .switch-user-type {
+  border-top: 1px solid #eee;
+}
+
+.theme-high-contrast .switch-user-type {
+  border-top: 3px solid #ffff00;
+}
+
+.recruiter-login-container .switch-user-type p {
+  font-size: 0.95rem;
+  transition: color 0.4s ease;
+}
+
+.theme-dark .switch-user-type p,
+.theme-light .switch-user-type p {
+  color: #666;
+}
+
+.theme-high-contrast .switch-user-type p {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.theme-dark .switch-user-type a {
+  color: #f72585;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.theme-dark .switch-user-type a:hover {
+  color: #7209b7;
+  text-decoration: underline;
+}
+
+.theme-light .switch-user-type a {
+  color: #764ba2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.theme-light .switch-user-type a:hover {
+  color: #667eea;
+  text-decoration: underline;
+}
+
+.theme-high-contrast .switch-user-type a {
+  color: #ffff00;
+  font-weight: 900;
+  text-decoration: underline;
+  font-size: 1.05rem;
+}
+
+.theme-high-contrast .switch-user-type a:hover {
+  color: #ffffff;
+  background: #ffff00;
+  color: #000000;
+  padding: 2px 6px;
+}
+
+/* ==================== SECURITY NOTE ==================== */
+.recruiter-login-container .security-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  transition: all 0.4s ease;
+}
+
+.theme-dark .security-note {
+  background: #f8f9fa;
+  color: #666;
+}
+
+.theme-light .security-note {
+  background: #f0f2f5;
+  color: #666;
+}
+
+.theme-high-contrast .security-note {
+  background: #000000;
+  border: 2px solid #ffff00;
+  color: #ffff00;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 4px;
+}
+
+/* ==================== SUCCESS OVERLAY ==================== */
+.recruiter-login-container .success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.theme-dark .success-overlay {
+  background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+}
+
+.theme-light .success-overlay {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.theme-high-contrast .success-overlay {
+  background: #000000;
+}
+
+.recruiter-login-container .success-card {
+  padding: 50px 60px;
+  border-radius: 20px;
+  text-align: center;
+  animation: scaleIn 0.5s ease;
+}
+
+.theme-dark .success-card,
+.theme-light .success-card {
+  background: white;
+}
+
+.theme-high-contrast .success-card {
+  background: #000000;
+  border: 4px solid #00ff00;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.recruiter-login-container .success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 20px;
+}
+
+.theme-dark .success-icon,
+.theme-light .success-icon {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  color: white;
+  box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
+}
+
+.theme-high-contrast .success-icon {
+  background: #00ff00;
+  color: #000000;
+  font-weight: 900;
+  box-shadow: none;
+  border: 3px solid #00ff00;
+}
+
+.recruiter-login-container .success-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.theme-dark .success-card h2,
+.theme-light .success-card h2 {
+  color: #2ecc71;
+}
+
+.theme-high-contrast .success-card h2 {
+  color: #00ff00;
+  font-weight: 900;
+}
+
+.recruiter-login-container .success-card p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+.theme-dark .success-card p,
+.theme-light .success-card p {
+  color: #666;
+}
+
+.theme-high-contrast .success-card p {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.recruiter-login-container .success-loader {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.theme-dark .success-loader {
+  border: 4px solid #e0e0e0;
+  border-top-color: #f72585;
+}
+
+.theme-light .success-loader {
+  border: 4px solid #e0e0e0;
+  border-top-color: #764ba2;
+}
+
+.theme-high-contrast .success-loader {
+  border: 5px solid #333333;
+  border-top-color: #00ff00;
+}
+
+/* ==================== LOGIN FOOTER ==================== */
+.recruiter-login-container .login-footer {
+  margin-top: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.recruiter-login-container .login-footer p {
+  font-size: 0.85rem;
+  transition: color 0.4s ease;
+}
+
+.theme-dark .login-footer p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-light .login-footer p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.theme-high-contrast .login-footer p {
+  color: #ffff00;
+  font-weight: 700;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 992px) {
+  .recruiter-login-container .login-card {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .recruiter-login-container .login-branding {
+    display: none;
+  }
+
+  .recruiter-login-container .back-button {
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .floating-toolbar {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .recruiter-login-container {
+    padding: 80px 15px 20px;
+  }
+
+  .recruiter-login-container .login-form-section {
+    padding: 35px 25px;
+  }
+
+  .recruiter-login-container .form-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .recruiter-login-container .recruiter-icon {
+    font-size: 2.5rem;
+  }
+
+  .recruiter-login-container .input-wrapper input {
+    padding: 14px 45px;
+    font-size: 0.95rem;
+  }
+
+  .recruiter-login-container .login-btn {
+    padding: 16px 25px;
+    font-size: 1rem;
+  }
+
+  .recruiter-login-container .back-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .recruiter-login-container .success-card {
+    padding: 40px 30px;
+    margin: 20px;
+  }
+
+  .recruiter-login-container .security-note {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .floating-toolbar {
+    position: fixed;
+    top: auto;
+    bottom: 15px;
+    right: 15px;
+    flex-direction: row;
+  }
+
+  .toolbar-btn {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+  }
+
+  .toolbar-btn-label {
+    display: none;
+  }
+
+  .toolbar-btn-icon {
+    font-size: 1.4rem;
+  }
+}
+
+/* ==================== ANIMATIONS ON LOAD ==================== */
+.recruiter-login-container .login-form-section {
+  animation: fadeIn 0.6s ease 0.2s backwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==================== HIGH CONTRAST FOCUS STYLES ==================== */
+.theme-high-contrast *:focus-visible {
+  outline: 4px solid #ffffff !important;
+  outline-offset: 3px !important;
+}
+
+.theme-high-contrast a:focus-visible {
+  background: #ffff00;
+  color: #000000;
+  outline: 4px solid #ffffff;
+}
