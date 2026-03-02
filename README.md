@@ -9,7 +9,7 @@
 **A modern, full-stack job application platform for data professionals.**
 **Upload your resume, let AI auto-fill your application, and land your dream data career.**
 
-[Live Demo](#) · [Report Bug](#) · [Request Feature](#)
+[Live Demo](https://datahires.onrender.com) · [Report Bug](#) · [Request Feature](#)
 
 </div>
 
