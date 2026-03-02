@@ -23,7 +23,7 @@ mongoose.connect(MONGODB_URI)
 
 // CORS
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://datahire.onrender.com',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
