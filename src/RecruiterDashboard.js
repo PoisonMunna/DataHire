@@ -349,8 +349,8 @@ const RecruiterDashboard = () => {
 
     try {
       const url = selectedPosition === 'all'
-        ? 'http://localhost:5000/api/applications/ranked'
-        : `http://localhost:5000/api/applications/ranked?position=${selectedPosition}`;
+        ? 'https://datahire.onrender.com/api/applications/ranked'
+        : `https://datahire.onrender.com/api/applications/ranked?position=${selectedPosition}`;
 
       const response = await fetch(url);
       const data = await response.json();
@@ -372,7 +372,7 @@ const RecruiterDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/applications/stats');
+      const response = await fetch('https://datahire.onrender.com/api/applications/stats');
       const data = await response.json();
       if (data.success) {
         setStats(data.data);
