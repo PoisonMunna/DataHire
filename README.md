@@ -1,4 +1,4 @@
-# 💼 DataHire — AI-Powered Job Application Platform
+# 💼 DataHire — AI-Powered Job Application Platform 
 
 <div align="center">
 
