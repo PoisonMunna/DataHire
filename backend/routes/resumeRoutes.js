@@ -63,11 +63,10 @@ router.post('/parse', (req, res, next) => {
 
 // Test route
 router.get('/test', (req, res) => {
-  const config = require('../config.json');
   res.json({
     success: true,
     message: '📄 Resume upload endpoint is working!',
-    openaiKey: config.OPENAI_API_KEY ? 'Configured ✅' : 'MISSING ❌',
+    openaiKey: process.env.OPENAI_API_KEY ? 'Configured ✅' : 'MISSING ❌',
     uploadsDir: require('path').join(__dirname, '..', 'uploads')
   });
 });
