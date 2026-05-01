@@ -66,7 +66,7 @@ router.get('/test', (req, res) => {
   res.json({
     success: true,
     message: '📄 Resume upload endpoint is working!',
-    openaiKey: process.env.OPENAI_API_KEY ? 'Configured ✅' : 'MISSING ❌',
+    geminiKey: process.env.GEMINI_API_KEY ? 'Configured ✅' : 'MISSING ❌',
     uploadsDir: require('path').join(__dirname, '..', 'uploads')
   });
 });
