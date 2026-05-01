@@ -7,20 +7,9 @@ const mammoth = require('mammoth');
 // Load .env
 require('dotenv').config();
 
-// ==================== PDF PARSE FIX ====================
-let pdfParse;
-try {
-  pdfParse = require('pdf-parse/lib/pdf-parse');
-  console.log('✅ pdf-parse loaded (method 1)');
-} catch (e) {
-  try {
-    const pdfModule = require('pdf-parse');
-    pdfParse = typeof pdfModule === 'function' ? pdfModule : pdfModule.default;
-    console.log('✅ pdf-parse loaded (method 2)');
-  } catch (e2) {
-    console.error('❌ pdf-parse failed to load');
-  }
-}
+// ==================== PDF PARSE ====================
+const pdfParse = require('pdf-parse-new');
+console.log('✅ pdf-parse-new loaded');
 
 // ==================== INITIALIZE GEMINI ====================
 let genAI;
@@ -38,10 +27,6 @@ try {
 const extractTextFromPDF = async (filePath) => {
   const dataBuffer = fs.readFileSync(filePath);
   console.log('📖 PDF buffer size:', dataBuffer.length, 'bytes');
-
-  if (!pdfParse || typeof pdfParse !== 'function') {
-    throw new Error('pdf-parse module not loaded properly');
-  }
 
   const data = await pdfParse(dataBuffer);
   console.log('📖 PDF pages:', data.numpages);
